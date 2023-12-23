@@ -11,3 +11,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+input#fold:not(:checked) ~ #main .catch-of-the-day > * {
+  -webkit-transform: none;
+          transform: none;
+}
+
+label[for="fold"] {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+input#fold {
+  display: none;
+}
+
+input#fold:checked + label {
+  background: #fff;
+  color: #000;
+}
+
+.store-selector {
+  background: #fff;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 2rem;
+  border: 2px solid #000;
+}
+
+.store-selector input,
+.store-selector button {
+  width: 100%;
+}
+
+.store-selector input[type="text"],
+.store-selector button[type="text"] {
+  text-align: center;
+  font-size: 3rem;
+}

@@ -9,8 +9,11 @@ class StorePicker extends React.Component {
     // 1. stop the form from submitting (to not relaod the page)
     event.preventDefault();
     // 2. get the text from the input
-    console.log(this.myInput.current.value);
-    // 3. change the page to the store form the input
+    const store = this.myInput.current.value;
+    // 3. change the page to the store form the input. we need to access to react router
+    // this.something(`/store/${store}`);
+
+
   }
   render() {
    return (

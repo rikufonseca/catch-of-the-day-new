@@ -1,7 +1,11 @@
 import React from 'react';
 import Header from './Header';
 import Order from './Order';
-import Inventory from './Inventory'
+import Inventory from './Inventory';
+// because it is not a component, don't need uppercase
+import sampleFishes from '../sample-fishes';
+import Fish from './Fish'
+
 
 class App extends React.Component {
   // we declare state here to be passed done to the children
@@ -16,15 +20,24 @@ class App extends React.Component {
     // 3. set the new fishes object in state, with built in method setState
     this.setState({ fishes });
   };
+
+  loadSampleFishes = () => {
+    // set the new fishes object on state
+    this.setState({fishes: sampleFishes})
+  }
   render() {
     // we call addFish where we need it then call it in inventory
+    // we use curly-brackets that told jsx we use javascript, (lesson displaying state in jsx)
     return (
       <div className="catch-of-the-day">
         <div className="menu">
           <Header tagline="Fresh Seafood Market"/>
+          <ul className="fishes">
+            {Object.keys(this.state.fishes).map(key => <Fish key={key} details={this.state.fishes[key]} />)}
+          </ul>
         </div>
           <Order/>
-          <Inventory addFish={this.addFish}/>
+          <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes}/>
       </div>
     )
   }

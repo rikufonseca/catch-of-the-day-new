@@ -289,7 +289,7 @@ header.top h1 .ofThe {
           justify-content: center;
   -webkit-box-align: center;
           align-items: center;
-  background: url("images/anchor.svg") center no-repeat;
+  background: url("anchor.svg") center no-repeat;
   background-size: cover;
   padding: 0 1rem;
 }
@@ -367,4 +367,36 @@ header.top h3:after {
 .fish-edit button {
   width: 100%;
   border: 0;
+}
+.menu-fish {
+  border-bottom: 2px solid #000;
+  border-top: 1px solid #000;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  margin-bottom: 5px;
+  clear: both;
+  overflow: hidden;
+}
+.menu-fish p {
+  margin: 0;
+  font-size: 1.8rem;
+}
+.menu-fish .fish-name {
+  margin: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+}
+.menu-fish .price {
+  font-size: 1.4rem;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+.menu-fish img {
+  float: left;
+  width: 150px;
+  margin-right: 1rem;
 }

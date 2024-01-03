@@ -11,7 +11,7 @@ class AddFishForm extends React.Component {
   createFish = (event) => {
     // stop the form from submitting
     event.preventDefault()
-    // pull all the value with ref (queryselect)
+    // pull all the value with ref (queryselect), in the console $r to find it
     const fish = {
       name: this.nameRef.current.value,
       // store the price in float

@@ -38,9 +38,10 @@ class App extends React.Component {
   }
 
   render() {
-    // we call addFish where we need it then call it in inventory
+    // Object.keys on l'utilise pour transformer un hash en harray to do the .map
     // we use curly-brackets that told jsx we use javascript, (lesson displaying state in jsx)
     // we use key={key} or index={key} is to pass props
+    // except of ligne 58 inside order we can pass everything in state by writting {...this.state}
     return (
       <div className="catch-of-the-day">
         <div className="menu">
@@ -54,7 +55,7 @@ class App extends React.Component {
               addToOrder={this.addToOrder} />)}
           </ul>
         </div>
-          <Order/>
+          <Order fishes={this.state.fishes} order={this.state.order}/>
           <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes}/>
       </div>
     )

@@ -4,7 +4,8 @@ import Order from './Order';
 import Inventory from './Inventory';
 // because it is not a component, don't need uppercase
 import sampleFishes from '../sample-fishes';
-import Fish from './Fish'
+import Fish from './Fish';
+import base from '../base';
 
 
 class App extends React.Component {
@@ -13,6 +14,17 @@ class App extends React.Component {
     fishes: {},
     order: {}
   };
+  // readen before everything else, contruct the database on firebase
+  componentDidMount() {
+    this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
+      context: this,
+      state: "fishes"
+    });
+  }
+  // xlean up the database, before rewritting it
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
 
   addFish = fish => {
     // 1. take a copy of the existing state

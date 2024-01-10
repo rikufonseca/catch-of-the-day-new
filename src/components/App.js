@@ -16,10 +16,20 @@ class App extends React.Component {
   };
   // readen before everything else, contruct the database on firebase
   componentDidMount() {
+    //first keep what is inside our localStorage, try console.log(localStorageRef)
+    const localStorageRef = localStorage.getItem(this.props.match.params.storeId);
+    if(localStorageRef) {
+      this.setState({order: JSON.parse(localStorageRef)});
+    };
     this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
       context: this,
       state: "fishes"
     });
+  }
+  // invoked imediately after a component is updated, make a comparison between the prevState and the current state, used to operate on DOM, good to make network requests, here we want to not lose our data in the case user refresh the page
+  componentDidUpdate() {
+    // we want to stick our order in localStorage, localStorage is a web storage solution to store data persistently on a user's device
+    localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
   }
   // xlean up the database, before rewritting it
   componentWillUnmount() {

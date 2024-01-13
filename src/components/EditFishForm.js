@@ -1,12 +1,11 @@
 import React from 'react';
 
-
-
 class EditFishForm extends React.Component {
   handleChange = (event) => {
     // console.log(event.currentTarget.value);
-    // 1.take a copy of the current fish and update the name by the new one
-    // computed property name, allows you to put an expression in square brackets [] , that will be computed and used as the property name.
+    // 1.take a copy of the current fish, with the new value
+    // 2.and update the name by the new one
+    // hint: computed property name, allows you to put an expression in square brackets [] , that will be computed and used as the property name.
     const updatedFish = {
       ...this.props.fish,
       [event.currentTarget.name]: event.currentTarget.value
@@ -26,7 +25,7 @@ class EditFishForm extends React.Component {
         </select>
         <textarea name='desc' onChange={this.handleChange} value={this.props.fish.desc}/>
         <input name="image" type="text" onChange={this.handleChange} value={this.props.fish.image}/>
-        <button type="submit"> Remove Fish </button>
+        <button type="submit" onClick={ () => this.props.deleteFish(this.props.index) }> Remove Fish </button>
       </form>
     )
   };

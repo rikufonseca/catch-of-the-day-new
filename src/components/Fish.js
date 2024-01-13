@@ -2,7 +2,6 @@ import React from 'react';
 import {formatPrice} from "../helper";
 
 class Fish extends React.Component {
-
   render() {
     // let use jsx destructuring to set multiple variable in a single shot
     const {image, name, price, desc, status } = this.props.details;

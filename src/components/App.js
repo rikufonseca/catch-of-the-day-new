@@ -7,7 +7,6 @@ import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
 import base from '../base';
 
-
 class App extends React.Component {
   // we declare state here to be passed done to the children
   state = {
@@ -54,6 +53,15 @@ class App extends React.Component {
     this.setState({ fishes });
   }
 
+  deleteFish = key => {
+    // 1. take a copy of state
+    const fishes = {...this.state.fishes};
+    // 2. update that state to null because of firebase
+    fishes[key] = null;
+    // 3. add the new state to the harray fishes
+    this.setState({ fishes });
+  }
+
   loadSampleFishes = () => {
     // set the new fishes object on state
     this.setState({fishes: sampleFishes})
@@ -66,6 +74,15 @@ class App extends React.Component {
     order[key] = order[key] + 1 || 1;
     // call stState to update or state object
     this.setState({order})
+  }
+
+  removeFromOrder = (key) => {
+    // take a copy of the state
+    const order = {...this.state.order};
+    // update the order with firebase the realtime database, we can use delete
+    delete order[key];
+    // update the state
+    this.setState({ order });
   }
 
   render() {
@@ -86,8 +103,8 @@ class App extends React.Component {
               addToOrder={this.addToOrder} />)}
           </ul>
         </div>
-          <Order fishes={this.state.fishes} order={this.state.order}/>
-          <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} fishes={this.state.fishes} updateFish={this.updateFish} />
+          <Order fishes={this.state.fishes} order={this.state.order} removeFromOrder={this.removeFromOrder} />
+          <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} fishes={this.state.fishes} updateFish={this.updateFish} deleteFish={this.deleteFish} />
       </div>
     )
   }

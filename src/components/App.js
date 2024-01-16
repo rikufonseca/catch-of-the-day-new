@@ -38,7 +38,7 @@ class App extends React.Component {
   addFish = fish => {
     // 1. take a copy of the existing state
     const fishes = {...this.state.fishes};
-    // 2. create our new fish to that fishes hash varaible, we use Date.now because we assumed that you enter every miniseconds no more than one fish, like this we will have a unique value, like this the fish will have a unique id or key
+    // 2. create our new fish to that fishes hash variable, we use Date.now because we assumed that you enter every miniseconds no more than one fish, like this we will have a unique value, like this the fish will have a unique id or key
     fishes[`fish${Date.now()}`] = fish;
     // 3. add the new fishes object in state, with built in method setState
     this.setState({ fishes });

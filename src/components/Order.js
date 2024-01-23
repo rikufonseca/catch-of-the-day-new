@@ -10,12 +10,12 @@ class Order extends React.Component {
     //make sure the fish is loaded before we continue, return null form firebase
     if(!fish) return null;
     if(!isAvailable) {
-      <CSSTransition classNames="order" key="key" timeout={{enter: 250, exit: 250}}>
+      <CSSTransition classNames="order" key={key} timeout={{enter: 250, exit: 250}}>
         return <li key={key} className="order"> Sorry {fish ? fish.name : 'fish' } is no longer available </li>;
       </CSSTransition>
     }
     return (
-      <CSSTransition classNames="order" key="key" timeout={{enter: 250, exit: 250}}>
+      <CSSTransition classNames="order" key={key} timeout={{enter: 250, exit: 250}}>
         <li key={key} className="order">
           <p> {count} lbs {fish.name} </p>
           <p> {formatPrice(count * fish.price)} </p>

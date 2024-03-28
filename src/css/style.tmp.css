@@ -112,9 +112,9 @@ input {
   line-height: normal;
 }
 button,
-html input[type=button],
-input[type=reset],
-input[type=submit] {
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
@@ -122,17 +122,17 @@ button[disabled],
 input[disabled] {
   cursor: default;
 }
-input[type=checkbox],
-input[type=radio] {
+input[type="checkbox"],
+input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
-input[type=search] {
+input[type="search"] {
   -webkit-appearance: textfield;
   box-sizing: content-box;
 }
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 textarea {
@@ -171,11 +171,11 @@ body {
   background: #d4d4d4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 2rem;
 }
 h1 {
-  font-family: 'blanchcaps_inline', sans-serif;
+  font-family: "blanchcaps_inline", sans-serif;
   text-align: center;
   font-weight: normal;
   margin: 0;
@@ -186,7 +186,7 @@ h4,
 h5,
 h6 {
   font-weight: normal;
-  font-family: 'haymakerregular', sans-serif;
+  font-family: "haymakerregular", sans-serif;
 }
 h2 {
   text-align: center;

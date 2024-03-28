@@ -1,5 +1,5 @@
-import React from 'react';
-import { getFunName } from '../helper';
+import React from "react";
+import { getFunName } from "../helper";
 
 class StorePicker extends React.Component {
   // we create ref has a queryselector
@@ -12,20 +12,22 @@ class StorePicker extends React.Component {
     const store = this.myInput.current.value;
     // 3. change the page to the store form without to refresh the page. we need to access to react router
     this.props.history.push(`/store/${store}`);
-
-  }
+  };
   render() {
-   return (
-     <form className='store-selector' onSubmit={this.goToStore}>
-       <h2> Please Enter A Store </h2>
-       <input
-         type='text'
-         // we have to ref the input in order to be able to re use it, it is like a querySelector
-         ref={this.myInput}
-         required placeholder='Store Name' defaultValue={getFunName()} />
-       <button type='submit'> Visit Store </button>
-     </form>
-   );
+    return (
+      <form className="store-selector" onSubmit={this.goToStore}>
+        <h2> Please Enter A Store </h2>
+        <input
+          type="text"
+          // we have to ref the input in order to be able to re use it, it is like a querySelector
+          ref = {this.myInput}
+          required
+          placeholder="Store Name"
+          defaultValue={getFunName()}
+        />
+        <button type="submit"> Visit Store </button>
+      </form>
+    );
   }
 }
 

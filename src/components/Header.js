@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 // here we have in our function only a render method, so we don't need to create a component with class Header extends React.Component
 // there is no this so we put props in argument
-const Header = ({ tagline }) => (
+const Header =  props  => (
   <header className="top">
     <h1>
       {" "}
@@ -13,9 +14,12 @@ const Header = ({ tagline }) => (
       Day
     </h1>
     <h3 className="tagline">
-      <span> {tagline} </span>
+      <span> {props.tagline} </span>
     </h3>
   </header>
 );
 
+Header.PropTypes = {
+  tagline: PropTypes.string.isRequired
+}
 export default Header;

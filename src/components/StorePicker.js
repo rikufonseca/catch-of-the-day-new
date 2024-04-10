@@ -1,7 +1,11 @@
 import React from "react";
 import { getFunName } from "../helper";
+import PropType from "prop-types";
 
 class StorePicker extends React.Component {
+  static propTypes = {
+    history: PropType.object
+  }
   // we create ref has a queryselector
   myInput = React.createRef();
   //handle submitting button with property to be able to access to this inside

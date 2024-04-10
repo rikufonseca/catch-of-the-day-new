@@ -1,7 +1,10 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 // state is an object that old data, state can be passed from parent to children only. here our data is in fish, so we will put it in app parent component
 class AddFishForm extends React.Component {
+  static propTypes = {
+    addFish: PropTypes.func.isRequired,
+  }
   nameRef = React.createRef();
   priceRef = React.createRef();
   statusRef = React.createRef();

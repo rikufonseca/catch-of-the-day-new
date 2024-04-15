@@ -1,10 +1,10 @@
 import React from "react";
 import { getFunName } from "../helper";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 
 class StorePicker extends React.Component {
   static propTypes = {
-    history: PropType.object
+    history: PropTypes.object
   }
   // we create ref has a queryselector
   myInput = React.createRef();

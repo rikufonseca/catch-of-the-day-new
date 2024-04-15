@@ -5,6 +5,7 @@ import AddFishForm from "./AddFishForm";
 import EditFishForm from "./EditFishForm";
 import Login from "./Login";
 import { firebaseApp } from "../base";
+import base from "../base";
 
 class Inventory extends React.Component {
   static propTypes = {
@@ -15,18 +16,68 @@ class Inventory extends React.Component {
     loadSampleFishes: PropTypes.func,
   }
 
-    authenticate = (provider) => {
-      const provider = new firebase.auth[`${provider}authProvider`]();
-    }
-  render() {
-    const isLoggedIn = this.props.isLoggedIn;
+  state = {
+    uid: null,
+    owner: null
+  }
 
-    if (!isLoggedIn) {
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        this.authHandler({ user });
+      }
+    })
+  }
+
+  authHandler = async authData => {
+    // 1. look at the current store and the firebase database
+    const store = await base.fetch(this.props.storeId, { context: this });
+    //2. claim it if there is no owner
+    if(!store.owner) {
+      //save it as her own
+      await base.post(`${this.props.storeId}/owner`, {
+        data: authData.user.uid
+      })
+    }
+    //3. set the state of the inventory component to reflect the current user
+    this.setState({
+      uid: authData.user.uid,
+      owner: store.owner || authData.user.uid
+    })
+  }
+  authenticate = (provider) => {
+    const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+    firebaseApp
+      .auth()
+      .signInWithPopup(authProvider)
+      .then(this.authHandler);
+  }
+
+  logout = async () => {
+    await firebase.auth().signOut();
+    this.setState({ uid: null });
+  }
+  render() {
+    const logout = <button onClick={this.logout}> Log Out! </button>;
+    // check if they are login
+    if (!this.state.uid) {
       return <Login authenticate={this.authenticate} />;
     }
+
+    // check if they are not the owner of the store
+    if (this.state.uid !== this.state.owner) {
+      return (
+        <div>
+          sorry your are not the owner of this store
+          {logout}
+        </div>
+      )
+    }
+    // they must ne the owner, just render the inventory
     return (
       <div className="inventory">
         <h2> Inventory </h2>
+        {logout}
         {Object.keys(this.props.fishes).map((key) => (
           <EditFishForm
             key={key}

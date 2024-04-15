@@ -1,0 +1,14 @@
+// these are your security rules for your firebase project, put them in you database project
+{
+  "rules": {
+    // won't let people delete existing room
+    ".write": "!data.exists()",
+    ".read": true,
+    "$room": {
+      //only for the store owner can edit the data
+      ".write":
+        "auth != null && (!data.exists() || data.child('owner').val() === auth.uid)",
+      ".read": true
+    }
+  }
+}
